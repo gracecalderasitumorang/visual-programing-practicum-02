@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="TUF"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-10-01 02.28.26 PM"/>
+        <attribute name="created" value="VFVGO0xBUFRPUC1USjFBR0hRUzsyMDIzLTA5LTI4OzA4LjI1LjI2IFBNOzI1OTY="/>
+        <attribute name="edited" value="VFVGO0xBUFRPUC1USjFBR0hRUzsyMDIzLTEwLTAxOzAyLjI4LjI2IFBNOzY7MjY4OQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="studikasus, kodematakuliah, matkul, dosenpengampu, formatnamatugas, status, deadline" type="String" array="False" size=""/>
+            <declare name="tingkatkesulitan, harihinggawaktupengumpulan" type="Integer" array="False" size=""/>
+            <declare name="prioritas" type="Real" array="False" size=""/>
+            <input variable="studikasus"/>
+            <input variable="kodematakuliah"/>
+            <input variable="matkul"/>
+            <input variable="dosenpengampu"/>
+            <input variable="deadline"/>
+            <input variable="formatnamatugas"/>
+            <input variable="harihinggawaktupengumpulan"/>
+            <input variable="status"/>
+            <input variable="tingkatkesulitan"/>
+            <assign variable="prioritas" expression="tingkatkesulitan*(1.0/harihinggawaktupengumpulan)"/>
+            <if expression="prioritas&gt;3">
+                <then>
+                    <assign variable="status" expression="&quot;Penting!Anda harus mengerjakan tugas ini segera.&quot;"/>
+                </then>
+                <else>
+                    <if expression="prioritas&gt;=1.5&amp;&amp;prioritas&lt;3">
+                        <then>
+                            <assign variable="status" expression="&quot;Tugas ini memiliki prioritas menengah.&quot;"/>
+                        </then>
+                        <else>
+                            <if expression="prioritas&lt;1.5">
+                                <then>
+                                    <assign variable="status" expression="&quot;Tugas ini relatif ringan,namun jangan tunda terlalu lama.&quot;"/>
+                                </then>
+                                <else/>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <output expression="&quot; prioritas :&quot; &amp;ToFixed(prioritas,2)" newline="True"/>
+            <output expression="studikasus&amp;&quot;|&quot;&amp;kodematakuliah&amp;&quot;|&quot;&amp;matkul&amp;&quot;|&quot;&amp;dosenpengampu&amp;&quot;|&quot;&amp;harihinggawaktupengumpulan&amp;&quot;|&quot;&amp;formatnamatugas&amp;&quot;|&quot;&amp;status&amp;&quot;|&quot;&amp;tingkatkesulitan" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
